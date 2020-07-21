@@ -11,13 +11,16 @@
     <title>Mood Meter</title>
   </head>
   <body>
-    <div id="react-container"></div>
+    <div id="react-container">I couldn't get it to render the React code :(</div>
     <script type="text/babel">
     // No need to change anything ABOVE this line ^
+    
+    //Fix #1: add import
+    import React, {Component} from 'react' 
+  
 
-
-
-    class App extends React.Component{
+    //Fix #2: fix syntax of the extends
+    class App extends Component {
       constructor(props){
         super(props)
         this.state = {
@@ -39,27 +42,33 @@
         this.setState({ setMood: this.state.moods[this.state.currentMood] })
       }
 
-      render(){
+      render() {
         return(
+          //Fix #3: put the return into one div container
+          <>
             <h1>Welcome to the Mood Meter App</h1>
             <h3>Mood Options:</h3>
             <p style={{fontSize: "50px"}}>
               { this.state.moods[this.state.currentMood] }
             </p>
-            <button onClick={ }>
+            <button onClick={ this.nextMood() }>
               Click Here For Next Mood Option
             </button>
             <h3>Save your mood here!</h3>
-            <button onClick={ this.setThisMood }>
+            <button onClick={ this.setThisMood() }>
               Yup, this is me right now.
             </button>
             <h3>My mood:</h3>
             <p style={{fontSize: "50px"}}>
               { this.state.setMood }
             </p>
+          </>
         )
       }
     }
+
+    //Fix #4: export App class
+    export default App
 
 
 
